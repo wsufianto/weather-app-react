@@ -52,9 +52,9 @@ function App() {
   }
 
   return (
-    <div className="container m-5">
-      <div className="row">
-        <div className="col text-center">
+    <div className="container pt-5 mt-5">
+      <div className="row align-content-center justify-content-center">
+        <div className="col col-md-8 text-center">
           <CheckWeather toFind={toFind} />
           {search !== "" && <Card icon={weatherData.icon} name={weatherData.name} description={weatherData.description} temp={weatherData.temp} />}
         </div>
