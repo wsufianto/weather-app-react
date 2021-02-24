@@ -1,8 +1,9 @@
-const Card = ({ icon, name, description, temp, feelslike }) => {
+// Card Component to display the output 
+const Card = ({ icon, name, description, temp }) => {
     return (
         <div className="card m-3">
             <div className="row no-gutters">
-                <div className="col-4">
+                <div className="col-3 align-self-center">
                     <img src={icon} alt="Weather Icon" />
                 </div>
                 <div className="col-4 text-left">
@@ -11,9 +12,9 @@ const Card = ({ icon, name, description, temp, feelslike }) => {
                         <h6 className="card-subtitle mb-2 text-muted">{description}</h6>
                     </div>
                 </div>
-                <div className="col-4">    
+                <div className="col-5 text-right">    
                     <div className="card-body">
-                        <p className="card-text">{temp} feels like {feelslike}</p>
+                        <p className="card-text">{temp} </p>
                     </div>    
                 </div>
             </div>
