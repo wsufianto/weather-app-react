@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import errorLogo from './error_icon.png'
 import CheckWeather from './components/CheckWeather';
 import Card from './components/Card';
+import getCountryName from './Constants/CountryName';
 
 function App() {
 
@@ -26,9 +27,12 @@ function App() {
 
         const data = await response.json();
 
+        const country = getCountryName(data.sys.country);
+        
         setWeather({
           icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
-          name: data.name,
+          name: `${data.name},`,
+          country: country,
           description: data.weather[0].description,
           temp: Math.trunc(data.main.temp) + " °C feels like " + Math.trunc(data.main.feels_like) + " °C"
         })
@@ -54,9 +58,9 @@ function App() {
   return (
     <div className="container pt-5 mt-5">
       <div className="row align-content-center justify-content-center">
-        <div className="col col-md-8 text-center">
+        <div className="col-md-10 col-lg-8 text-center">
           <CheckWeather toFind={toFind} />
-          {search !== "" && <Card icon={weatherData.icon} name={weatherData.name} description={weatherData.description} temp={weatherData.temp} />}
+          {search !== "" && <Card icon={weatherData.icon} name={weatherData.name} country={weatherData.country} description={weatherData.description} temp={weatherData.temp} />}
         </div>
       </div>
     </div>
